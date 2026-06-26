@@ -107,19 +107,6 @@ Some features that can be added in future versions are:
 
 ---
 
-## Repository Contents
-
-```text
-├── README.md
-├── LICENSE
-├── Arduino_Code
-├── Documentation
-├── BlockDiagram.png
-└── SchematicDiagram.png
-```
-
----
-
 ## Author
 
 **Mohammed Hameed**
