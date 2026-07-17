@@ -1,0 +1,213 @@
+/*
+  ============================================================
+  Project  : Obstacle Detection and Avoiding Robot Car
+  Author   : Hameed
+  Board    : Arduino UNO
+  ============================================================
+  Components:
+    - HC-SR04 Ultrasonic Sensor (Trig: Pin 9, Echo: Pin 10)
+    - Servo Motor              (Signal: Pin 3)
+    - L298N Motor Driver
+    - Two DC Motors
+
+  Logic:
+    Robot moves forward continuously.
+    On detecting obstacle within 20cm:
+      1. Stop and reverse
+      2. Scan left (150°) and right (30°) with servo
+      3. Turn toward the clearer side
+  ============================================================
+*/
+
+#include <Servo.h>
+
+Servo scanner;
+
+// ---- Pin Definitions ----
+#define TRIG_PIN          9
+#define ECHO_PIN          10
+#define ENA               5
+#define ENB               6
+#define IN1               7
+#define IN2               8
+#define IN3               11
+#define IN4               12
+
+// ---- Tunable Parameters ----
+#define OBSTACLE_DISTANCE 20    // cm — obstacle threshold
+#define MOTOR_SPEED       180   // 0–255 PWM
+#define SCAN_DELAY        500   // ms — servo settle time
+#define REVERSE_TIME      400   // ms — reverse duration
+#define TURN_TIME         500   // ms — turn duration
+
+// ---- Distance Variables ----
+int distance      = 0;
+int leftDistance  = 0;
+int rightDistance = 0;
+
+// ============================================================
+void setup()
+{
+  Serial.begin(9600);
+
+  // Motor pins
+  pinMode(IN1, OUTPUT);
+  pinMode(IN2, OUTPUT);
+  pinMode(IN3, OUTPUT);
+  pinMode(IN4, OUTPUT);
+  pinMode(ENA, OUTPUT);
+  pinMode(ENB, OUTPUT);
+
+  // Ultrasonic pins
+  pinMode(TRIG_PIN, OUTPUT);
+  pinMode(ECHO_PIN, INPUT);
+
+  // Servo — center position on startup
+  scanner.attach(3);
+  scanner.write(90);
+
+  // Set motor speed
+  analogWrite(ENA, MOTOR_SPEED);
+  analogWrite(ENB, MOTOR_SPEED);
+
+  delay(1000); // Startup settle time
+  Serial.println("Robot Initialized. Starting...");
+}
+
+// ============================================================
+void loop()
+{
+  distance = getDistance();
+
+  Serial.print("Front Distance: ");
+  Serial.print(distance);
+  Serial.println(" cm");
+
+  if (distance > OBSTACLE_DISTANCE)
+  {
+    moveForward();
+  }
+  else
+  {
+    Serial.println("Obstacle detected! Scanning...");
+
+    stopRobot();
+    delay(300);
+
+    moveBackward();
+    delay(REVERSE_TIME);
+    stopRobot();
+    delay(200);
+
+    // Scan left
+    scanner.write(150);
+    delay(SCAN_DELAY);
+    leftDistance = getDistance();
+    Serial.print("Left Distance: ");
+    Serial.print(leftDistance);
+    Serial.println(" cm");
+
+    // Scan right
+    scanner.write(30);
+    delay(SCAN_DELAY);
+    rightDistance = getDistance();
+    Serial.print("Right Distance: ");
+    Serial.print(rightDistance);
+    Serial.println(" cm");
+
+    // Return servo to center
+    scanner.write(90);
+    delay(300);
+
+    // Decide direction
+    if (leftDistance > rightDistance)
+    {
+      Serial.println("Turning LEFT");
+      turnLeft();
+      delay(TURN_TIME);
+    }
+    else if (rightDistance > leftDistance)
+    {
+      Serial.println("Turning RIGHT");
+      turnRight();
+      delay(TURN_TIME);
+    }
+    else
+    {
+      // Equal distance — default turn right
+      Serial.println("Equal sides — defaulting RIGHT");
+      turnRight();
+      delay(TURN_TIME);
+    }
+
+    stopRobot();
+  }
+}
+
+// ============================================================
+// Ultrasonic Distance Measurement
+// Returns distance in cm. Returns 999 on timeout or error.
+// ============================================================
+int getDistance()
+{
+  digitalWrite(TRIG_PIN, LOW);
+  delayMicroseconds(2);
+  digitalWrite(TRIG_PIN, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIG_PIN, LOW);
+
+  long duration = pulseIn(ECHO_PIN, HIGH, 30000); // 30ms timeout
+
+  int dist = duration * 0.034 / 2;
+
+  // Filter out invalid readings
+  if (dist == 0 || dist > 400)
+  {
+    dist = 999; // Treat as clear path
+  }
+
+  return dist;
+}
+
+// ============================================================
+// Motor Control Functions
+// ============================================================
+void moveForward()
+{
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
+}
+
+void moveBackward()
+{
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, HIGH);
+}
+
+void turnLeft()
+{
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
+}
+
+void turnRight()
+{
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, HIGH);
+}
+
+void stopRobot()
+{
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, LOW);
+}
