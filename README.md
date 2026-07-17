@@ -1,109 +1,189 @@
 # Obstacle Detection and Avoiding Robot Car Using Arduino UNO
 
+> 🏆 **State-Level 2nd Prize – Telangana Srujana Techfest (2023–2024)**
+>
+> This project was awarded **2nd Prize** at the Telangana State Srujana Techfest (2023–2024) for its practical implementation of an autonomous obstacle detection and avoidance robot using Arduino UNO.
+
+---
+
 ## Project Overview
 
-This project was developed during my Diploma in Electrical and Electronics Engineering to understand the fundamentals of embedded systems and robotics. The robot is capable of detecting obstacles using an HC-SR04 ultrasonic sensor and automatically changing its direction to avoid collisions.
+This project was developed during my Diploma in Electrical and Electronics Engineering to understand the fundamentals of embedded systems, robotics, and sensor interfacing.
 
-The complete system is built around an Arduino UNO microcontroller, which continuously processes the sensor data and controls the movement of the DC motors through an L293D motor driver.
+The robot is designed to move autonomously by continuously detecting obstacles using an HC-SR04 ultrasonic sensor. Whenever an obstacle is detected within a predefined distance, the Arduino UNO processes the sensor data and changes the direction of the robot, allowing it to continue moving without manual control.
+
+The project provided hands-on experience in hardware integration, embedded programming, motor control, and robotic automation.
+
+---
+
+## Project Specifications
+
+| Item | Details |
+|------|---------|
+| Microcontroller | Arduino UNO |
+| Programming Language | Embedded C (Arduino IDE) |
+| Sensor | HC-SR04 Ultrasonic Sensor |
+| Motor Driver | L293D |
+| Navigation | Autonomous Obstacle Avoidance |
+| Power Source | Rechargeable Battery |
+| Project Type | Embedded Systems & Robotics |
 
 ---
 
 ## Features
 
-- Automatic obstacle detection
-- Autonomous obstacle avoidance
-- Ultrasonic distance measurement
-- Servo motor based scanning
-- Battery powered operation
-- Arduino UNO based controller
+- Autonomous obstacle detection
+- Automatic obstacle avoidance
+- Real-time ultrasonic distance measurement
+- Servo motor based environmental scanning
+- Battery-powered operation
+- Low-cost robotic automation
+- Embedded C based control system
 
 ---
 
-## Hardware Used
+## Bill of Materials
 
-- Arduino UNO
-- HC-SR04 Ultrasonic Sensor
-- Servo Motor
-- L293D Motor Driver
-- DC Motors
-- Rechargeable Battery
-- Robot Chassis
+| Component | Quantity |
+|-----------|---------:|
+| Arduino UNO | 1 |
+| HC-SR04 Ultrasonic Sensor | 1 |
+| Servo Motor | 1 |
+| L293D Motor Driver | 1 |
+| DC Motors | 2 |
+| Robot Chassis | 1 |
+| Wheels | 2 |
+| Rechargeable Battery | 1 |
+| Power Switch | 1 |
 
 ---
 
 ## Software Used
 
-- Embedded C
 - Arduino IDE
-- ExpressSCH (for circuit design)
+- Embedded C
+- ExpressSCH (Circuit Design)
 
 ---
 
-## How the Robot Works
+## Working Principle
 
-1. The ultrasonic sensor continuously measures the distance in front of the robot.
-2. The sensor is mounted on a servo motor to scan different directions.
-3. If an obstacle is detected, the Arduino checks the available path.
-4. The motor driver changes the direction of the DC motors.
-5. The robot continues moving through the obstacle-free path.
+The ultrasonic sensor continuously measures the distance between the robot and nearby obstacles.
 
----
+The sensor is mounted on a servo motor, allowing it to scan different directions. Whenever an obstacle is detected, the Arduino UNO processes the sensor data and determines the safest direction to move.
 
-## Block Diagram
-
-![Block Diagram](BlockDiagram.png)
-
-The block diagram shows the connection between the Arduino UNO, ultrasonic sensor, servo motor, motor driver and DC motors.
+The Arduino then controls the L293D motor driver, which drives the DC motors accordingly. This process repeats continuously, enabling the robot to navigate autonomously without human intervention.
 
 ---
 
-## Circuit Diagram
+## Project Gallery
 
-![Circuit Diagram](SchematicDiagram.png)
+### Block Diagram
 
-The schematic illustrates the interfacing of the Arduino UNO with the ultrasonic sensor, servo motor and L293D motor driver.
+![Block Diagram](Images/BlockDiagram.png)
 
 ---
 
-## Project Outcome
+### Circuit Diagram
 
-The robot was successfully able to detect nearby obstacles and automatically avoid them without manual intervention. The project helped me understand sensor interfacing, embedded C programming, motor control and hardware integration using Arduino.
+![Circuit Diagram](Images/SchematicDiagram.png)
+
+---
+
+## Robot Prototype
+
+The image below shows the final prototype of the obstacle detection and avoiding robot developed using Arduino UNO, an HC-SR04 ultrasonic sensor, a servo motor, and an L293D motor driver. The robot was built to autonomously detect obstacles and navigate around them without human intervention.
+
+![Robot Prototype](Images/RobotPhoto.jpg)
+
+---
+
+## Working Demonstration
+
+A short demonstration of the robot is available in the video below. The demonstration shows the robot detecting nearby obstacles, changing its direction automatically, and continuing along an obstacle-free path.
+
+🎥 **Project Demonstration Video:**
+
+https://youtu.be/your-video-link
+
+---
+
+## Applications
+
+This project can be used in:
+
+- Autonomous Mobile Robots
+- Warehouse Automation
+- Industrial Material Handling
+- Educational Robotics
+- Smart Navigation Systems
+- Embedded Systems Learning
 
 ---
 
 ## What I Learned
 
-During this project I gained practical experience in:
+Working on this project helped me understand:
 
 - Arduino Programming
-- Embedded C
-- Ultrasonic Sensor Interfacing
+- Embedded C Programming
+- Sensor Interfacing
 - Motor Driver Control
 - Servo Motor Control
 - Embedded Systems
-- Basic Robotics
-- Hardware Troubleshooting
+- Robotics Fundamentals
+- Hardware Integration
+- Circuit Design
+- Troubleshooting and Testing
 
 ---
 
-## Achievement
+## Challenges Faced
 
-🏆 **2nd Prize – Telangana State Srujana Techfest (2023–2024)**
+Some of the challenges I encountered during this project were:
 
-This project received the State Level Second Prize during Telangana State Srujana Techfest for its practical implementation of an autonomous obstacle detection and avoidance robot.
+- Calibrating the ultrasonic sensor for reliable distance measurement.
+- Ensuring smooth movement while changing direction.
+- Managing wiring connections between sensors, motors, and the controller.
+- Testing and troubleshooting the robot under different operating conditions.
+
+These challenges improved my debugging and problem-solving skills during hardware development.
 
 ---
 
 ## Future Improvements
 
-Some features that can be added in future versions are:
+Some possible enhancements include:
 
-- Bluetooth Control
-- Mobile App Control
-- Wi-Fi Monitoring
-- Camera Based Navigation
-- AI Object Detection
+- Bluetooth-based Manual Control
+- Mobile App Integration
+- Wi-Fi / IoT Connectivity
+- Camera-based Navigation
+- AI-based Object Detection
 - GPS Navigation
+- Voice Control
+
+---
+
+## Repository Structure
+
+```text
+Obstacle-Detection-Robot-Car
+│
+├── Arduino_Code
+│   └── ObstacleRobot.ino
+│
+├── Documentation
+│   └── Project_Report.pdf
+│
+├── Images
+│   ├── BlockDiagram.png
+│   ├── SchematicDiagram.png
+│   └── RobotPhoto.jpg
+│
+├── README.md
+└── LICENSE
+```
 
 ---
 
@@ -111,14 +191,22 @@ Some features that can be added in future versions are:
 
 **Mohammed Hameed**
 
-Diploma in Electrical and Electronics Engineering
+Electrical and Electronics Engineering Student
 
-**Areas of Interest**
+### Areas of Interest
 
 - Electric Vehicles
 - Embedded Systems
 - Robotics
+- MATLAB / Simulink
 - Power Electronics
-- MATLAB/Simulink
+
+---
+
+## Acknowledgement
+
+I would like to express my sincere gratitude to my project guide, faculty members, and Government Polytechnic Chegunta for their guidance and support throughout this project.
+
+I am also thankful to the Telangana State Srujana Techfest (2023–2024) for providing an opportunity to present this work, where it was awarded **State-Level 2nd Prize**.
 
 ---
