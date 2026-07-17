@@ -165,28 +165,6 @@ Some possible enhancements include:
 
 ---
 
-## Repository Structure
-
-```text
-Obstacle-Detection-Robot-Car
-│
-├── Arduino_Code
-│   └── ObstacleRobot.ino
-│
-├── Documentation
-│   └── Project_Report.pdf
-│
-├── Images
-│   ├── BlockDiagram.png
-│   ├── SchematicDiagram.png
-│   └── RobotPhoto.jpg
-│
-├── README.md
-└── LICENSE
-```
-
----
-
 ## Author
 
 **Mohammed Hameed**
