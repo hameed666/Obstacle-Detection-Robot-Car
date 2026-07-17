@@ -94,7 +94,7 @@ The Arduino then controls the L293D motor driver, which drives the DC motors acc
 
 The image below shows the final prototype of the obstacle detection and avoiding robot developed using Arduino UNO, an HC-SR04 ultrasonic sensor, a servo motor, and an L293D motor driver. The robot was built to autonomously detect obstacles and navigate around them without human intervention.
 
-![Robot Prototype](Images/RobotPhoto.jpg)
+![Robot Prototype](RobotPhoto.jpg)
 
 ---
 
@@ -104,7 +104,7 @@ A short demonstration of the robot is available in the video below. The demonstr
 
 🎥 **Project Demonstration Video:**
 
-https://youtu.be/your-video-link
+Robot_Demonstration.mp4
 
 ---
 
