@@ -100,11 +100,9 @@ The image below shows the final prototype of the obstacle detection and avoiding
 
 ## Working Demonstration
 
-A short demonstration of the robot is available in the video below. The demonstration shows the robot detecting nearby obstacles, changing its direction automatically, and continuing along an obstacle-free path.
+The following video demonstrates the robot detecting obstacles and automatically navigating around them without manual intervention.
 
-🎥 **Project Demonstration Video:**
-
-Robot_Demonstration.mp4
+[▶️ Watch Robot Demonstration](Videos/Obstacle_Detection_Robot_Demo.mp4)
 
 ---
 
