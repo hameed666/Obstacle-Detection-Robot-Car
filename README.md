@@ -102,7 +102,7 @@ The image below shows the final prototype of the obstacle detection and avoiding
 
 The following video demonstrates the robot detecting obstacles and automatically navigating around them without manual intervention.
 
-[▶️ Watch Robot Demonstration](Videos/Obstacle_Detection_Robot_Demo.mp4)
+[▶️ Watch Robot Demonstration](Obstacle_Detection_Robot_Demo.mp4)
 
 ---
 
