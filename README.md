@@ -80,7 +80,7 @@ The Arduino then controls the L293D motor driver, which drives the DC motors acc
 
 ### Block Diagram
 
-![Block Diagram](Images/BlockDiagram.png)
+![Block Diagram](BlockDiagram.png)
 
 ---
 
